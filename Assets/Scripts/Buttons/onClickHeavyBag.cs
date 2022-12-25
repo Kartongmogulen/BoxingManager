@@ -7,9 +7,13 @@ public class onClickHeavyBag : MonoBehaviour
 {
     public string name;
     public string workoutOneStat;
+    public string workoutTwoStat;
+
+    //public int heavyBagKnockdownWorkoutXP; //Hur mycket XP som erhålls per träningspass
+   
+    //public Button buttonOne;
 
     public Text nameEquipment;
-    public Text workoutOneStatName;
 
     public GameObject gymScriptsGO;
 
@@ -18,8 +22,19 @@ public class onClickHeavyBag : MonoBehaviour
     public void OnMouseDown()
     {
         nameEquipment.text = name;
-        workoutOneStatName.text = workoutOneStat;
+        //workoutOneStatName.text = workoutOneStat;
 
-        gymScriptsGO.GetComponent<activeWorkout>().knockout = true;
+        gymScriptsGO.GetComponent<trainingMeny>().showPossibleWorkouts(workoutOneStat, workoutTwoStat);
+
+        //gymScriptsGO.GetComponent<activeWorkout>().knockout = true;
     }
+
+    /*
+    public void buttonOneKO()
+    {
+        gymScriptsGO.GetComponent<activeWorkout>().knockout = true;
+
+
+    }
+    */
 }

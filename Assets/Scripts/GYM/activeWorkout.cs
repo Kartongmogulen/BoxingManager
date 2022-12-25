@@ -8,4 +8,6 @@ public class activeWorkout : MonoBehaviour
     //När spelaren avslutar rundan körs denna
 
     public bool knockout;
+    public bool bodyshot;
+
 }

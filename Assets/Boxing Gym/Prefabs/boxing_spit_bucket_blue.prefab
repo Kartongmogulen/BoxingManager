@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &183692723818946776
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 348509962968598697, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6903988fc1530b148a6822cf782ea124, type: 2}
+    - target: {fileID: 352407972404618071, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6903988fc1530b148a6822cf782ea124, type: 2}
+    - target: {fileID: 762564228656299764, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_Name
+      value: boxing_spit_bucket_blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800452521150290467, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_FadeMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381569198727138535, guid: 2789371e5b6ed5d4ca03cd1b499001e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2789371e5b6ed5d4ca03cd1b499001e5, type: 3}
