@@ -56,8 +56,10 @@ public class player : MonoBehaviour
     public bool guardFlexibleHeadActive;
 
     [Header("Attack Base")]
+    public int accuarcyStartOfGame;
     public int accuracy; //Chans att träffa
     public int accuracyStatAfterLastFight; //Stat efter senaste matchen, går ej att gå lägre än detta.
+    public int strengthStartOfGame;
     public int strength; //Skada
     public int strengthStatAfterLastFight; //Stat efter senaste matchen, går ej att gå lägre än detta.
     public int endurance; //Stamina use
@@ -131,7 +133,10 @@ public class player : MonoBehaviour
         jabStaminaUseLow = FightStatsShared.jabStaminaUseLow;
         jabDamageLow = Mathf.RoundToInt(strength / FightStatsShared.jabStaminaUseLow);
 
+        accuracy = accuarcyStartOfGame;
         accuracyStatAfterLastFight = accuracy;
+
+        strength = strengthStartOfGame;
         strengthStatAfterLastFight = strength;
         
 

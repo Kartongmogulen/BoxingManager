@@ -24,7 +24,7 @@ public class onClickHeavyBag : MonoBehaviour
         nameEquipment.text = name;
         //workoutOneStatName.text = workoutOneStat;
 
-        gymScriptsGO.GetComponent<trainingMeny>().showPossibleWorkouts(workoutOneStat, workoutTwoStat);
+        gymScriptsGO.GetComponent<trainingMeny>().showPossibleWorkouts(workoutOneStat, workoutTwoStat, "");
 
         //gymScriptsGO.GetComponent<activeWorkout>().knockout = true;
     }
