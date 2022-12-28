@@ -6,6 +6,6 @@ using UnityEngine;
 public class trainingStatManager : ScriptableObject 
 {
     public List<int> xpPerLvl; //XP som krävs för att lvl upp
-
+    public int xpLearnOneTwoCombo;
 
 }

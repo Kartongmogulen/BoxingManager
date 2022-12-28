@@ -7,6 +7,8 @@ public class trainingMeny : MonoBehaviour
 {
     public trainingStatManager TrainingStatManager;
     public workoutStats WorkoutStats;
+    public equipmentLevelManager EquipmentLevelManager;
+    public attributeManager AttributeManager;
 
     public player PlayerOne;
     public playerXPManager PlayerXPManager;
@@ -21,11 +23,6 @@ public class trainingMeny : MonoBehaviour
     public Text playerStatLvlNow;
     public Text playerXPNow;
     public Text playerXPAfter;
-
-    private void Start()
-    {
-       
-    }
 
     public void showPossibleWorkouts(string workoutOne, string workoutTwo, string workoutThree)
     {
@@ -61,7 +58,7 @@ public class trainingMeny : MonoBehaviour
         {
             playerStatLvlNow.text = "Knockout: " + PlayerOne.knockdownChance;
             playerXPNow.text = "XP now: " + PlayerXPManager.knockdownXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.knockdownChance];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.knockdownXP + WorkoutStats.XPWorkout[WorkoutStats.lvlHeavyBag]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.knockdownChance];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.knockdownXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.knockdownChance];
             ActiveWorkout.knockout = true;
         }
 
@@ -78,11 +75,19 @@ public class trainingMeny : MonoBehaviour
             Debug.Log("ButtonOneClick GuardHead");
             playerStatLvlNow.text = "GuardHead: " + PlayerOne.guardHead;
             playerXPNow.text = "XP now: " + PlayerXPManager.guardHeadXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardHead-1]; //Justerar då guard startar på 1
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.guardHeadXP + WorkoutStats.XPWorkout[WorkoutStats.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardHead-1];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.guardHeadXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardHead-1];
             ActiveWorkout.guardHead = true;
         }
 
-        
+        else if (buttonOneText.text == "StaminaMax")
+        {
+            Debug.Log("ButtonOneClick StaminaMax");
+            playerStatLvlNow.text = "StaminaMax: " + PlayerOne.staminaHealthNow;
+            playerXPNow.text = "XP now: " + PlayerXPManager.staminaMaxXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStamina];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.staminaMaxXP + WorkoutStats.XPWorkout[WorkoutStats.lvlOutside]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStamina];
+            ActiveWorkout.staminaMax = true;
+        }
+
     }
 
     
@@ -93,7 +98,7 @@ public class trainingMeny : MonoBehaviour
         {
             playerStatLvlNow.text = "Bodyshot: " + PlayerOne.reduceOpponentStaminaRecoveryChance;
             playerXPNow.text = "XP now: " + PlayerXPManager.bodyshotXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.reduceOpponentStaminaRecoveryChance];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.bodyshotXP + WorkoutStats.XPWorkout[WorkoutStats.lvlHeavyBag]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.reduceOpponentStaminaRecoveryChance];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.bodyshotXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.reduceOpponentStaminaRecoveryChance];
             ActiveWorkout.bodyshot = true;
         }
 
@@ -118,8 +123,17 @@ public class trainingMeny : MonoBehaviour
             Debug.Log("ButtonOneClick GuardBody");
             playerStatLvlNow.text = "GuardBody: " + PlayerOne.guardBody;
             playerXPNow.text = "XP now: " + PlayerXPManager.guardBodyXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardBody - 1]; //Justerar då guard startar på 1
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.guardBodyXP + WorkoutStats.XPWorkout[WorkoutStats.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardBody - 1];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.guardBodyXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardBody - 1];
             ActiveWorkout.guardBody = true;
+        }
+
+        if (buttonTwoText.text == "StaminaRecovery")
+        {
+            Debug.Log("ButtonOneClick GuardBody");
+            playerStatLvlNow.text = "StaminaRecovery: " + PlayerOne.staminaRecoveryBetweenRounds;
+            playerXPNow.text = "XP now: " + PlayerXPManager.staminaRecXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStaminaRecovery]; 
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.staminaRecXP + WorkoutStats.XPWorkout[WorkoutStats.lvlOutside]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStaminaRecovery];
+            ActiveWorkout.staminaRecovery = true;
         }
     }
 
@@ -139,8 +153,29 @@ public class trainingMeny : MonoBehaviour
         {
             playerStatLvlNow.text = "GuardFlex: " + PlayerOne.guardFlexibleDuringFight;
             playerXPNow.text = "XP now: " + PlayerXPManager.guardFlexXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardFlexibleDuringFight];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.guardFlexXP + WorkoutStats.XPWorkout[WorkoutStats.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardFlexibleDuringFight];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.guardFlexXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardFlexibleDuringFight];
             ActiveWorkout.guardFlex = true;
+        }
+
+        if (buttonThreeText.text == "OneTwoCombo")
+        {
+            if (PlayerOne.oneTwoUnlocked == false)
+            {
+                playerStatLvlNow.text = "OneTwoCombo: NOT LEARNED";
+                playerXPNow.text = "XP now: " + PlayerXPManager.comboOneTwoXP + "/" + AttributeManager.oneTwoCostUnlock;
+                playerXPAfter.text = "XP after: " + (PlayerXPManager.comboOneTwoXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + AttributeManager.oneTwoCostUnlock;
+            }
+
+            else
+            {
+                playerStatLvlNow.text = "OneTwoCombo: lvl: " + PlayerOne.oneTwoComboLvl;
+                playerXPNow.text = "XP now: " + PlayerXPManager.comboOneTwoXP + "/" + AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl];
+                playerXPAfter.text = "XP after: " + (PlayerXPManager.comboOneTwoXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl];
+
+            }
+                ActiveWorkout.oneTwoCombo = true;
+
+
         }
 
     }
@@ -158,6 +193,10 @@ public class trainingMeny : MonoBehaviour
         ActiveWorkout.guardHead = false;
         ActiveWorkout.knockout = false;
         ActiveWorkout.strength = false;
+        ActiveWorkout.staminaMax = false;
+        ActiveWorkout.staminaRecovery = false;
+
+        ActiveWorkout.oneTwoCombo = false;
 
     }
 

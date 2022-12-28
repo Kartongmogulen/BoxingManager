@@ -7,6 +7,7 @@ public class playerXPManager : MonoBehaviour
     // Hanterar XP mellan stats lvl upp
     public player PlayerOne;
     public trainingStatManager TrainingStatManager;
+    public attributeManager AttributeManager;
 
     public int accuracyXP;
     public int bodyshotXP;
@@ -17,7 +18,12 @@ public class playerXPManager : MonoBehaviour
     public int guardFlexXP;
     public int guardHeadXP;
     public int knockdownXP;
+    public int staminaMaxXP;
+    public int staminaRecXP;
     public int strengthXP;
+
+    //Combos
+    public int comboOneTwoXP;
 
     public void accuracyXPUpdate()
     {
@@ -107,6 +113,26 @@ public class playerXPManager : MonoBehaviour
         }
     }
 
+    public void staminaMaxXPUpdate()
+    {
+        //Stat lvl upp?
+        if (staminaMaxXP >= TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStamina])
+        {
+            PlayerOne.playerLvlHealthStamina++;
+            PlayerOne.upgradePlayer();
+        }
+    }
+
+    public void staminaRecoveryXPUpdate()
+    {
+        //Stat lvl upp?
+        if (staminaRecXP >= TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStaminaRecovery])
+        {
+            PlayerOne.playerLvlHealthStaminaRecovery++;
+            PlayerOne.upgradePlayer();
+        }
+    }
+
     public void strengthXPUpdate()
     {
         //Stat lvl upp?
@@ -116,4 +142,20 @@ public class playerXPManager : MonoBehaviour
         }
     }
 
+    //COMBOS
+
+    public void comboOneTwoXPUpdate()
+    {
+        //Stat lvl upp?
+        
+        if (comboOneTwoXP >= AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl] && PlayerOne.oneTwoUnlocked == true)
+        {
+            PlayerOne.oneTwoComboLvl++;
+        }
+
+        else if (comboOneTwoXP >= AttributeManager.oneTwoCostUnlock && PlayerOne.oneTwoUnlocked == false)
+        {
+            PlayerOne.oneTwoUnlocked = true;
+        }
+    }
 }

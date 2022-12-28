@@ -21,5 +21,6 @@ MonoBehaviour:
   sluggerHealthBodyLvlChange: 1
   counterpuncherDodgeBoost: 3
   costGuardFlexibleDuringFight: 3
-  oneTwoAccuracyIncrease: 02000000
-  oneTwoCostUnlock: 3
+  oneTwoAccuracyIncrease: 0200000004000000
+  oneTwoCostUnlock: 4
+  oneTwoCostToLvlUp: 070000000f000000

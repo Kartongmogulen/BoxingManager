@@ -8,6 +8,7 @@ public class endWeekButton : MonoBehaviour
     public activeWorkout ActiveWorkout;
     public workoutStats WorkoutStats;
     public playerXPManager PlayerXPManager;
+    public equipmentLevelManager EquipmentLevelManager;
 
     public Text weekCounterText;
     public int weekCounter;
@@ -26,7 +27,7 @@ public class endWeekButton : MonoBehaviour
 
         if (ActiveWorkout.bodyshot == true)
         {
-            PlayerXPManager.bodyshotXP += WorkoutStats.XPWorkout[WorkoutStats.lvlHeavyBag];
+            PlayerXPManager.bodyshotXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag];
             Debug.Log("UpdateXP Bodyshot");
             PlayerXPManager.bodyshotXPUpdate();
         }
@@ -54,21 +55,21 @@ public class endWeekButton : MonoBehaviour
 
         if (ActiveWorkout.guardBody == true)
         {
-            PlayerXPManager.guardBodyXP += WorkoutStats.XPWorkout[WorkoutStats.lvlFoamsticks];
+            PlayerXPManager.guardBodyXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks];
             Debug.Log("UpdateXP guardBody");
             PlayerXPManager.guardBodyXPUpdate();
         }
 
         if (ActiveWorkout.guardFlex == true)
         {
-            PlayerXPManager.guardFlexXP += WorkoutStats.XPWorkout[WorkoutStats.lvlFoamsticks];
+            PlayerXPManager.guardFlexXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks];
             Debug.Log("UpdateXP guardFlex");
             PlayerXPManager.guardFlexXPUpdate();
         }
 
         if (ActiveWorkout.guardHead == true)
         {
-            PlayerXPManager.guardHeadXP += WorkoutStats.XPWorkout[WorkoutStats.lvlFoamsticks];
+            PlayerXPManager.guardHeadXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks];
             Debug.Log("UpdateXP guardHead");
             PlayerXPManager.guardHeadXPUpdate();
         }
@@ -76,9 +77,26 @@ public class endWeekButton : MonoBehaviour
         if (ActiveWorkout.knockout == true)
         {
             
-            PlayerXPManager.knockdownXP += WorkoutStats.XPWorkout[WorkoutStats.lvlHeavyBag];
+            PlayerXPManager.knockdownXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag];
            
             PlayerXPManager.knockdownXPUpdate();
+        }
+
+        if (ActiveWorkout.staminaMax == true)
+        {
+
+            PlayerXPManager.staminaMaxXP += WorkoutStats.XPWorkout[WorkoutStats.lvlOutside];
+
+            PlayerXPManager.staminaMaxXPUpdate();
+        }
+
+
+        if (ActiveWorkout.staminaRecovery == true)
+        {
+
+            PlayerXPManager.staminaRecXP += WorkoutStats.XPWorkout[WorkoutStats.lvlOutside];
+
+            PlayerXPManager.staminaRecoveryXPUpdate();
         }
 
         if (ActiveWorkout.strength == true)
@@ -87,6 +105,14 @@ public class endWeekButton : MonoBehaviour
             PlayerXPManager.strengthXP += WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress];
 
             PlayerXPManager.strengthXPUpdate();
+        }
+
+        if (ActiveWorkout.oneTwoCombo == true)
+        {
+
+            PlayerXPManager.comboOneTwoXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag];
+
+            PlayerXPManager.comboOneTwoXPUpdate();
         }
 
 

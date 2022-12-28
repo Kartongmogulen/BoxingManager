@@ -16,6 +16,10 @@ public class activeWorkout : MonoBehaviour
     public bool guardFlex;
     public bool guardHead;
     public bool knockout;
+    public bool staminaMax;
+    public bool staminaRecovery;
     public bool strength;
+
+    public bool oneTwoCombo;
 
 }

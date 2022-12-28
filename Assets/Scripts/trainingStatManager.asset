@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: trainingStatManager
   m_EditorClassIdentifier: 
   xpPerLvl: 02000000050000000a000000
+  xpLearnOneTwoCombo: 20

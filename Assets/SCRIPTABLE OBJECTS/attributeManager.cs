@@ -26,4 +26,5 @@ public class attributeManager : ScriptableObject
     [Header("Combos")]
     public int[] oneTwoAccuracyIncrease;
     public int oneTwoCostUnlock;
+    public List<int> oneTwoCostToLvlUp;
 }

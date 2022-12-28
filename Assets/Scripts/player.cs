@@ -125,6 +125,7 @@ public class player : MonoBehaviour
 
     //Combos
     public bool oneTwoUnlocked;
+    public int oneTwoComboLvl;
 
     public void Awake()
     {
