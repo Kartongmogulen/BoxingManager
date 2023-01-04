@@ -148,7 +148,12 @@ public class playerXPManager : MonoBehaviour
     {
         //Stat lvl upp?
         
-        if (comboOneTwoXP >= AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl] && PlayerOne.oneTwoUnlocked == true)
+        if (PlayerOne.oneTwoComboLvl == AttributeManager.oneTwoCostToLvlUp.Count)
+        {
+            return;
+        }
+
+       else if (comboOneTwoXP >= AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl] && PlayerOne.oneTwoUnlocked == true)
         {
             PlayerOne.oneTwoComboLvl++;
         }

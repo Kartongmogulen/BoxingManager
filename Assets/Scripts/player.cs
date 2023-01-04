@@ -134,11 +134,6 @@ public class player : MonoBehaviour
         jabStaminaUseLow = FightStatsShared.jabStaminaUseLow;
         jabDamageLow = Mathf.RoundToInt(strength / FightStatsShared.jabStaminaUseLow);
 
-        accuracy = accuarcyStartOfGame;
-        accuracyStatAfterLastFight = accuracy;
-
-        strength = strengthStartOfGame;
-        strengthStatAfterLastFight = strength;
         
 
         if (Opponent == true)
@@ -154,8 +149,17 @@ public class player : MonoBehaviour
 
             startFight();
         }
+        else
+        {
+            accuracy = accuarcyStartOfGame;
+            accuracyStatAfterLastFight = accuracy;
 
-            bodyHealthNow = playerPanel.GetComponent<attributeLevelManager>().bodyHealthByLvl[playerLvlHealthBody];
+            strength = strengthStartOfGame;
+            strengthStatAfterLastFight = strength;
+
+        }
+
+        bodyHealthNow = playerPanel.GetComponent<attributeLevelManager>().bodyHealthByLvl[playerLvlHealthBody];
             bodyHealthStart = bodyHealthNow; //La till detta i samband med simuleringspanel då detta annars körs vid knappen som startar fighten.
 
             headHealthNow = playerPanel.GetComponent<attributeLevelManager>().headHealthByLvl[playerLvlHealthHead];

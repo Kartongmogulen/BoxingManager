@@ -13,6 +13,13 @@ public class endWeekButton : MonoBehaviour
     public Text weekCounterText;
     public int weekCounter;
 
+    public GameObject gameloopScriptsGO;
+
+    private void Start()
+    {
+        updateWeekCount();
+    }
+
     //När veckan avslutas i gymmet
 
     public void updateXPforStat()
@@ -20,57 +27,67 @@ public class endWeekButton : MonoBehaviour
 
         if (ActiveWorkout.accuracy == true)
         {
-            PlayerXPManager.accuracyXP += WorkoutStats.XPWorkout[WorkoutStats.lvlTennisball];
-            Debug.Log("UpdateXP Accuracy");
+           
+
+           if (EquipmentLevelManager.foamsticksActive == true)
+            {
+                PlayerXPManager.accuracyXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks-1];//MINSKAR MED 1 FÖR ÄR ATT INTE FOAMSTICKS SKA VARA OP
+            }
+
+           else
+           PlayerXPManager.accuracyXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlTennisball];
+
+
+            //Debug.Log("UpdateXP Accuracy");
             PlayerXPManager.accuracyXPUpdate();
         }
 
         if (ActiveWorkout.bodyshot == true)
         {
             PlayerXPManager.bodyshotXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag];
-            Debug.Log("UpdateXP Bodyshot");
+            //Debug.Log("UpdateXP Bodyshot");
             PlayerXPManager.bodyshotXPUpdate();
         }
 
         if (ActiveWorkout.bodyHealth == true)
         {
-            PlayerXPManager.bodyHealthXP += WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress];
-            Debug.Log("UpdateXP BodyHealth");
+            PlayerXPManager.bodyHealthXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlSafetyMattress];
+            //Debug.Log("UpdateXP BodyHealth");
             PlayerXPManager.bodyHealthXPUpdate();
         }
 
         if (ActiveWorkout.dodge == true)
         {
-            PlayerXPManager.dodgeXP += WorkoutStats.XPWorkout[WorkoutStats.lvlTennisball];
-            Debug.Log("UpdateXP Dodge");
+            PlayerXPManager.dodgeXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlTennisball];
+            //Debug.Log("UpdateXP Dodge");
             PlayerXPManager.dodgeXPUpdate();
         }
 
         if (ActiveWorkout.headHealth == true)
         {
-            PlayerXPManager.headHealthXP += WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress];
-            Debug.Log("UpdateXP HeadHealth");
+            PlayerXPManager.headHealthXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlSafetyMattress];
+            //Debug.Log("UpdateXP HeadHealth");
             PlayerXPManager.headHealthXPUpdate();
         }
 
         if (ActiveWorkout.guardBody == true)
         {
             PlayerXPManager.guardBodyXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks];
-            Debug.Log("UpdateXP guardBody");
+            //Debug.Log("UpdateXP guardBody");
             PlayerXPManager.guardBodyXPUpdate();
         }
 
         if (ActiveWorkout.guardFlex == true)
         {
             PlayerXPManager.guardFlexXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks];
-            Debug.Log("UpdateXP guardFlex");
+            //Debug.Log("UpdateXP guardFlex");
             PlayerXPManager.guardFlexXPUpdate();
         }
 
         if (ActiveWorkout.guardHead == true)
         {
             PlayerXPManager.guardHeadXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks];
-            Debug.Log("UpdateXP guardHead");
+            //Debug.Log("UpdateXP guardHead");
             PlayerXPManager.guardHeadXPUpdate();
         }
 
@@ -85,7 +102,7 @@ public class endWeekButton : MonoBehaviour
         if (ActiveWorkout.staminaMax == true)
         {
 
-            PlayerXPManager.staminaMaxXP += WorkoutStats.XPWorkout[WorkoutStats.lvlOutside];
+            PlayerXPManager.staminaMaxXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlOutside];
 
             PlayerXPManager.staminaMaxXPUpdate();
         }
@@ -94,7 +111,7 @@ public class endWeekButton : MonoBehaviour
         if (ActiveWorkout.staminaRecovery == true)
         {
 
-            PlayerXPManager.staminaRecXP += WorkoutStats.XPWorkout[WorkoutStats.lvlOutside];
+            PlayerXPManager.staminaRecXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlOutside];
 
             PlayerXPManager.staminaRecoveryXPUpdate();
         }
@@ -102,7 +119,7 @@ public class endWeekButton : MonoBehaviour
         if (ActiveWorkout.strength == true)
         {
 
-            PlayerXPManager.strengthXP += WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress];
+            PlayerXPManager.strengthXP += WorkoutStats.XPWorkout[EquipmentLevelManager.lvlSafetyMattress];
 
             PlayerXPManager.strengthXPUpdate();
         }
@@ -123,6 +140,15 @@ public class endWeekButton : MonoBehaviour
     {
         weekCounter++;
         weekCounterText.text = "Week: " + weekCounter;
+
+        if (weekCounter % 4 == 0)
+        {
+            gameloopScriptsGO.GetComponent<endOfMonth>().endOfMonthUpdate();
+        }
     }
+
+    
+
+   
 
 }

@@ -13,16 +13,29 @@ public class trainingMeny : MonoBehaviour
     public player PlayerOne;
     public playerXPManager PlayerXPManager;
     public activeWorkout ActiveWorkout;
+    
     public Button buttonOne;
+    public bool buttonOneActive;
     public Text buttonOneText;
+    public Text buttonOneTextTwo;
     public Button buttonTwo;
+    public bool buttonTwoActive;
     public Text buttonTwoText;
+    public Text buttonTwoStatTwoText;
     public GameObject buttonThreeGO;
+    public bool buttonThreeActive;
     public Text buttonThreeText;
+    public Text buttonThreeStatTwoText;
 
+    //Stat 1
     public Text playerStatLvlNow;
     public Text playerXPNow;
     public Text playerXPAfter;
+
+    //Stat 2
+    public Text playerStatTwoLvlNow;
+    public Text playerXPNowStatTwo;
+    public Text playerXPAfterStatTwo;
 
     public void showPossibleWorkouts(string workoutOne, string workoutTwo, string workoutThree)
     {
@@ -39,18 +52,25 @@ public class trainingMeny : MonoBehaviour
         }
     }
 
+    public void showCombinedWorkoutStat(string workoutOne)
+    {
+        buttonOneTextTwo.text = workoutOne;
+        buttonTwoStatTwoText.text = workoutOne;
+        buttonThreeStatTwoText.text = workoutOne;
+
+    }
+
     public void buttonOneClick()
     {
-        Debug.Log("ButtonOneClick Start");
         inactiveAll();
-        Debug.Log("ButtonOneClick 1");
+        inactiveButtons();
+        buttonOneActive = true;
+
         if (buttonOneText.text == "Accuracy")
         {
-            Debug.Log("ButtonOneClick 2");
             playerStatLvlNow.text = "Accuracy: " + PlayerOne.accuracy;
-            Debug.Log("ButtonOneClick 3");
             playerXPNow.text = "XP now: " + PlayerXPManager.accuracyXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy-PlayerOne.accuarcyStartOfGame];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.accuracyXP + WorkoutStats.XPWorkout[WorkoutStats.lvlTennisball]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy-PlayerOne.accuarcyStartOfGame];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.accuracyXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlTennisball]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy-PlayerOne.accuarcyStartOfGame];
             ActiveWorkout.accuracy = true;
         }
 
@@ -66,7 +86,7 @@ public class trainingMeny : MonoBehaviour
         {
             playerStatLvlNow.text = "Strength: " + PlayerOne.strength;
             playerXPNow.text = "XP now: " + PlayerXPManager.strengthXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.strength-PlayerOne.strengthStartOfGame];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.strengthXP + WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.strength-PlayerOne.strengthStartOfGame];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.strengthXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlSafetyMattress]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.strength-PlayerOne.strengthStartOfGame];
             ActiveWorkout.strength = true;
         }
 
@@ -84,16 +104,27 @@ public class trainingMeny : MonoBehaviour
             Debug.Log("ButtonOneClick StaminaMax");
             playerStatLvlNow.text = "StaminaMax: " + PlayerOne.staminaHealthNow;
             playerXPNow.text = "XP now: " + PlayerXPManager.staminaMaxXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStamina];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.staminaMaxXP + WorkoutStats.XPWorkout[WorkoutStats.lvlOutside]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStamina];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.staminaMaxXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlOutside]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStamina];
             ActiveWorkout.staminaMax = true;
         }
 
+        if(buttonOneTextTwo.text == "Accuracy" && EquipmentLevelManager.foamsticksActive == true)
+        {
+         
+            playerStatTwoLvlNow.text = "Accuracy: " + PlayerOne.accuracy;
+            playerXPNowStatTwo.text = "XP now: " + PlayerXPManager.accuracyXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy - PlayerOne.accuarcyStartOfGame];
+            playerXPAfterStatTwo.text = "XP after: " + (PlayerXPManager.accuracyXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks-1]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy - PlayerOne.accuarcyStartOfGame];
+            ActiveWorkout.accuracy = true;
+        }
+       
     }
 
     
     public void buttonTwoClick()
     {
         inactiveAll();
+        inactiveButtons();
+        buttonTwoActive = true;
         if (buttonTwoText.text == "Bodyshot")
         {
             playerStatLvlNow.text = "Bodyshot: " + PlayerOne.reduceOpponentStaminaRecoveryChance;
@@ -106,7 +137,7 @@ public class trainingMeny : MonoBehaviour
         {
             playerStatLvlNow.text = "Dodge: " + PlayerOne.dodge;
             playerXPNow.text = "XP now: " + PlayerXPManager.dodgeXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.dodge];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.dodgeXP + WorkoutStats.XPWorkout[WorkoutStats.lvlTennisball]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.dodge];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.dodgeXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlTennisball]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.dodge];
             ActiveWorkout.dodge = true;
         }
 
@@ -114,13 +145,13 @@ public class trainingMeny : MonoBehaviour
         {
             playerStatLvlNow.text = "HealthHead: " + PlayerOne.headHealthNow;
             playerXPNow.text = "XP now: " + PlayerXPManager.headHealthXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthHead];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.headHealthXP + WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthHead];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.headHealthXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlSafetyMattress]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthHead];
             ActiveWorkout.headHealth = true;
         }
 
         if (buttonTwoText.text == "GuardBody")
         {
-            Debug.Log("ButtonOneClick GuardBody");
+            //Debug.Log("ButtonOneClick GuardBody");
             playerStatLvlNow.text = "GuardBody: " + PlayerOne.guardBody;
             playerXPNow.text = "XP now: " + PlayerXPManager.guardBodyXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardBody - 1]; //Justerar då guard startar på 1
             playerXPAfter.text = "XP after: " + (PlayerXPManager.guardBodyXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.guardBody - 1];
@@ -129,23 +160,33 @@ public class trainingMeny : MonoBehaviour
 
         if (buttonTwoText.text == "StaminaRecovery")
         {
-            Debug.Log("ButtonOneClick GuardBody");
+            //Debug.Log("ButtonOneClick GuardBody");
             playerStatLvlNow.text = "StaminaRecovery: " + PlayerOne.staminaRecoveryBetweenRounds;
             playerXPNow.text = "XP now: " + PlayerXPManager.staminaRecXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStaminaRecovery]; 
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.staminaRecXP + WorkoutStats.XPWorkout[WorkoutStats.lvlOutside]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStaminaRecovery];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.staminaRecXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlOutside]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthStaminaRecovery];
             ActiveWorkout.staminaRecovery = true;
+        }
+
+        if (buttonTwoStatTwoText.text == "Accuracy" && EquipmentLevelManager.foamsticksActive == true)
+        {
+
+            playerStatTwoLvlNow.text = "Accuracy: " + PlayerOne.accuracy;
+            playerXPNowStatTwo.text = "XP now: " + PlayerXPManager.accuracyXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy - PlayerOne.accuarcyStartOfGame];
+            playerXPAfterStatTwo.text = "XP after: " + (PlayerXPManager.accuracyXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlFoamsticks - 1]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.accuracy - PlayerOne.accuarcyStartOfGame];
+            ActiveWorkout.accuracy = true;
         }
     }
 
     public void buttonThreeClick()
     {
         inactiveAll();
-
+        inactiveButtons();
+        buttonThreeActive = true;
         if (buttonThreeText.text == "HealthBody")
         {
             playerStatLvlNow.text = "HealthBody: " + PlayerOne.bodyHealthNow;
             playerXPNow.text = "XP now: " + PlayerXPManager.bodyHealthXP + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthBody];
-            playerXPAfter.text = "XP after: " + (PlayerXPManager.bodyHealthXP + WorkoutStats.XPWorkout[WorkoutStats.lvlSafetyMattress]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthBody];
+            playerXPAfter.text = "XP after: " + (PlayerXPManager.bodyHealthXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlSafetyMattress]) + "/" + TrainingStatManager.xpPerLvl[PlayerOne.playerLvlHealthBody];
             ActiveWorkout.bodyHealth = true;
         }
 
@@ -166,15 +207,22 @@ public class trainingMeny : MonoBehaviour
                 playerXPAfter.text = "XP after: " + (PlayerXPManager.comboOneTwoXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + AttributeManager.oneTwoCostUnlock;
             }
 
-            else
+            if (PlayerOne.oneTwoUnlocked == true && PlayerOne.oneTwoComboLvl == AttributeManager.oneTwoCostToLvlUp.Count)
+            {
+                playerStatLvlNow.text = "OneTwoCombo: lvl: " + PlayerOne.oneTwoComboLvl;
+                playerXPNow.text = "XP now: MAX level";// + PlayerXPManager.comboOneTwoXP + "/" + AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl];
+                playerXPAfter.text = "XP after: MAX level";// + (PlayerXPManager.comboOneTwoXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl];
+
+            }
+
+            else if (PlayerOne.oneTwoUnlocked == true && PlayerOne.oneTwoComboLvl < AttributeManager.oneTwoCostToLvlUp.Count)
             {
                 playerStatLvlNow.text = "OneTwoCombo: lvl: " + PlayerOne.oneTwoComboLvl;
                 playerXPNow.text = "XP now: " + PlayerXPManager.comboOneTwoXP + "/" + AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl];
                 playerXPAfter.text = "XP after: " + (PlayerXPManager.comboOneTwoXP + WorkoutStats.XPWorkout[EquipmentLevelManager.lvlHeavyBag]) + "/" + AttributeManager.oneTwoCostToLvlUp[PlayerOne.oneTwoComboLvl];
 
             }
-                ActiveWorkout.oneTwoCombo = true;
-
+            ActiveWorkout.oneTwoCombo = true;
 
         }
 
@@ -198,6 +246,31 @@ public class trainingMeny : MonoBehaviour
 
         ActiveWorkout.oneTwoCombo = false;
 
+    }
+
+    public void inactiveButtons()
+    {
+        buttonOneActive = false;
+        buttonTwoActive = false;
+        buttonThreeActive = false;
+    }
+
+    public void updateGymUI()
+    {
+        if (buttonOneActive == true)
+        {
+            buttonOneClick();
+        }
+
+        if (buttonTwoActive == true)
+        {
+            buttonTwoClick();
+        }
+
+        if (buttonThreeActive == true)
+        {
+            buttonThreeClick();
+        }
     }
 
 

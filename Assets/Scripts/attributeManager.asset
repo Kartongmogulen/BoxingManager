@@ -22,5 +22,5 @@ MonoBehaviour:
   counterpuncherDodgeBoost: 3
   costGuardFlexibleDuringFight: 3
   oneTwoAccuracyIncrease: 0200000004000000
-  oneTwoCostUnlock: 4
-  oneTwoCostToLvlUp: 070000000f000000
+  oneTwoCostUnlock: 10
+  oneTwoCostToLvlUp: 0a00000019000000

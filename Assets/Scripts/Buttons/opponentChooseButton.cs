@@ -13,6 +13,7 @@ public class opponentChooseButton : MonoBehaviour
     {
         fightUIScriptsGO.GetComponent<opponentStatsDisplayPanel>().updateOpponentRandom(0);
         fightScriptsGO.GetComponent<fightManager>().setOpponentIndex(0);
+        Debug.Log("Choose Opponent 1");
     }
 
     public void chooseOpponentTwo()

@@ -21,4 +21,10 @@ public class moneyManager : MonoBehaviour
         moneyNow -= moneyConsumed;
         moneyNowText.text = "Money: " + moneyNow;
     }
+
+    public void increaseMoney(int money)
+    {
+        moneyNow += money;
+        moneyNowText.text = "Money: " + moneyNow;
+    }
 }

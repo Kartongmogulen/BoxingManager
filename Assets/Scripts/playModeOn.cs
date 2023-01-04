@@ -10,11 +10,15 @@ public class playModeOn : MonoBehaviour
     public GameObject champChoosePanelGO;
     public GameObject fightScriptsGO;
     public GameObject playerPanelScriptGO;
+    public GameObject gymPanelGO;
+    public GameObject endOfWeekPanelGO;
+
     public player PlayerOne;
 
     [Header("Ranking Manager")]
-    public int playerRankedLvlForBelt; //När spelaren är Rankad och slås för bältet
-    public int limitToRankUpPlayer; //Antal fler segrar än förluster.
+    public int victoriesToUnlockChamps; //Antal segrar innan Spelaren kan möta Champions
+    //public int playerRankedLvlForBelt; //När spelaren är Rankad och slås för bältet
+    //public int limitToRankUpPlayer; //Antal fler segrar än förluster.
 
     [Header("Matchinställning")]
     public int roundFightLength;
@@ -23,6 +27,10 @@ public class playModeOn : MonoBehaviour
 
     private void Awake()
     {
+        //UI vid start
+        gymPanelGO.SetActive(true);
+        endOfWeekPanelGO.SetActive(false);
+
         //Rätt GO Player väljs
         fightScriptsGO.GetComponent<fightManager>().PlayerOne = PlayerOne;
         playerPanelScriptGO.GetComponent<playerStatsUIController>().setUpPlayerGO();
@@ -30,9 +38,10 @@ public class playModeOn : MonoBehaviour
 
         //Ranking
         GetComponentInParent<rankingManager>().playerRanked = false;
-        champChoosePanelGO.SetActive(false);
-        GetComponentInParent<rankingManager>().playerRankedLvlForBelt = playerRankedLvlForBelt;
-        GetComponentInParent<rankingManager>().limitToRankUpPlayer = limitToRankUpPlayer;
+        GetComponentInParent<rankingManager>().victoriesToUnlockChamps = 
+        //champChoosePanelGO.SetActive(false);
+        //GetComponentInParent<rankingManager>().playerRankedLvlForBelt = playerRankedLvlForBelt;
+        //GetComponentInParent<rankingManager>().limitToRankUpPlayer = limitToRankUpPlayer;
 
         //Match-inställningar
         fightScriptsGO.GetComponent<fightManager>().roundFightLength = roundFightLength;

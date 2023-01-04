@@ -112,22 +112,29 @@ public class fightManager : MonoBehaviour
     }
     */
 
-        public void opponentListToUse()
+        public void opponentListToUse(int lvlListToUse)
     {
         Debug.Log("Player LvL: " + playerRankedLvl);
         //Väljer vilken lista av motståndare som ska användas.
-        if (playerRankedLvl == 0)
+        if (lvlListToUse == 0)
         {
             //PlayerTwo = opponentListRandomGO.GetComponent<playerList>().PlayerList[opponentIndex];
             //PlayerTwo = opponentListLvlZeroRandomGO.GetComponent<playerList>().PlayerList[opponentIndex];
             opponentListRandomGO = opponentListLvlZeroRandomGO;
         }
 
-       else if (playerRankedLvl == 1)
+       if (lvlListToUse == 1)
         {
             //PlayerTwo = opponentListRandomGO.GetComponent<playerList>().PlayerList[opponentIndex];
             //PlayerTwo = opponentListLvlOneRandomGO.GetComponent<playerList>().PlayerList[opponentIndex];
             opponentListRandomGO = opponentListLvlOneRandomGO;
+        }
+
+        if (lvlListToUse == 2)
+        {
+            //PlayerTwo = opponentListRandomGO.GetComponent<playerList>().PlayerList[opponentIndex];
+            //PlayerTwo = opponentListLvlOneRandomGO.GetComponent<playerList>().PlayerList[opponentIndex];
+            opponentListRandomGO = opponentListRankedGO;
         }
     }
 
@@ -1013,7 +1020,8 @@ public void playerOneCrossHead(int accuracyBoost)
         
         PlayerOne.resetAfterFight();
         simulationPanelGO.GetComponent<simulateFight>().endOfFight();
-        gameloopScripsGO.GetComponent<rankingManager>().checkIfPlayerWillRankUp(PlayerOne.GetComponent<boxRecord>().victory);
+        gameloopScripsGO.GetComponent<rankingManager>().unlockChampionsAfterXFights(PlayerOne.GetComponent<boxRecord>().victory);
+        //gameloopScripsGO.GetComponent<rankingManager>().checkIfPlayerWillRankUp(PlayerOne.GetComponent<boxRecord>().victory);
         //Debug.Log("Vinster: " + PlayerOne.GetComponent<boxRecord>().victory);
         //Debug.Log("Förluster: " + PlayerOne.GetComponent<boxRecord>().defeat);
         playerRankedLvl = gameloopScripsGO.GetComponent<rankingManager>().playerRankedLvl;
@@ -1041,7 +1049,7 @@ public void playerOneCrossHead(int accuracyBoost)
         //RESET UI
         GetComponentInChildren<defendHeadManager>().resetAfterFight();
         GetComponentInChildren<defendBodyManager>().resetAfterFight();
-        opponentListToUse();
+        opponentListToUse(playerRankedLvl);
 
     }
 

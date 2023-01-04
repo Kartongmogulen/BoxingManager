@@ -14,6 +14,8 @@ public class rankingManager : MonoBehaviour
 
     public int rankedForFirstTime;
 
+    public int victoriesToUnlockChamps; //X antal segrar innan spelaren låser upp Champions;
+
     //public createOpponentAttributeList CreateOpponentAttributeListSO;
     public GameObject playerListChampionsFixed;
     public bool playerRanked;
@@ -25,14 +27,28 @@ public class rankingManager : MonoBehaviour
     public GameObject playerPanelUIGO;
     public GameObject fightScriptsGO;
     public GameObject championsPanelGO;
-
+    public GameObject championsButtonGO;
+    
     //public willPlayerRankUp WillPlayerRankUp;
 
     //START ENDAST FÖR TEST
-    public void Start()
+    /*public void Start()
     {
         checkIfPlayerWillRankUp(0);
     
+    }*/
+
+    public void unlockChampionsAfterXFights(int victories)
+    {
+        if (victories >= victoriesToUnlockChamps)
+        {
+            playerRanked = true;
+        }
+
+        if (playerRanked == true)
+        {
+            championsButtonGO.SetActive(true);
+        }
     }
 
     public void checkIfPlayerWillRankUp(int victories)

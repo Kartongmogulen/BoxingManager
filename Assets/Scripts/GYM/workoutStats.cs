@@ -11,7 +11,7 @@ public class workoutStats : MonoBehaviour
     
     //public int lvlFoamsticks;
     //public int lvlHeavyBag;
-    public int lvlTennisball;
-    public int lvlSafetyMattress;
-    public int lvlOutside;
+    //public int lvlTennisball;
+    //public int lvlSafetyMattress;
+    //public int lvlOutside;
 }
