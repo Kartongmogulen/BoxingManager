@@ -138,7 +138,7 @@ public class simRankedFight : MonoBehaviour
 
     public void endOfFightPlayerOneWonByKO()
     {
-        Debug.Log("Player One Won by KO");
+        //Debug.Log("Player One Won by KO");
         changeRankedPosition(0, 2);
     }
 

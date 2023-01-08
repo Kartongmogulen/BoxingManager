@@ -11,6 +11,8 @@ public class endOfMonth : MonoBehaviour
 
     public GameObject gymPanelGO;
     public GameObject endOfMonthPanelGO;
+    public GameObject PlayerOne;
+    public GameObject rankingsGO;
 
 
 
@@ -19,6 +21,8 @@ public class endOfMonth : MonoBehaviour
         endOfMonthPanelGO.SetActive(true);
         gymPanelGO.SetActive(false);
         updateWorkSalaryText();
+
+        rankingsGO.GetComponent<rankingListVisualisation>().updateTextVictoriesLeftBeforeUnlockChampions();
     }
 
     public void chooseWork()

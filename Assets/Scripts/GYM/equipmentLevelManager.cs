@@ -119,6 +119,8 @@ public class equipmentLevelManager : MonoBehaviour
             buttonTwoStatTwoTextGO.SetActive(true);
 
             foamsticksColliderGO.GetComponent<gymEquipmentOnClick>().combinedWorkouts = true;
+
+            specialWorkoutText.text = "";
         }
     }
 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbf2e3a25ff0a747b54abfa7376bc0d, type: 3}
   m_Name: trainingStatManager
   m_EditorClassIdentifier: 
-  xpPerLvl: 040000000a0000001400000023000000320000004b00000078000000fa000000
+  xpPerLvl: 0200000004000000080000001000000020000000400000008000000000010000
   xpLearnOneTwoCombo: 20

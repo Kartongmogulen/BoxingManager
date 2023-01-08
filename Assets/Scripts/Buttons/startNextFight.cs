@@ -14,6 +14,7 @@ public class startNextFight : MonoBehaviour
     public player playerTwo;
 
     public healthPanelTextUpdate HealthPanelTextUpdate;
+    public playerStatsUIController PlayerStatsUIController;
 
     public GameObject playerPanelGO;
     public GameObject playerPanelScriptsGO;
@@ -21,6 +22,8 @@ public class startNextFight : MonoBehaviour
     public GameObject victoryPanelGO;
     public GameObject endOfMonthPanelGO;
     public GameObject gymPanelGO;
+    public GameObject moneyTextGO;
+    public GameObject playerStatsButtonGO;
 
     private void Start()
     {
@@ -45,10 +48,13 @@ public class startNextFight : MonoBehaviour
     {
         endOfMonthPanelGO.SetActive(false);
         fightPanelGO.SetActive(true);
+        moneyTextGO.SetActive(false);
+        playerStatsButtonGO.SetActive(false);
 
         fightScriptGO.GetComponent<fightManager>().setUpFight();
         HealthPanelTextUpdate.updatePlayerOneText();
         playerOne.startFight();
+        PlayerStatsUIController.guardDuringFight();
         saveStatsForPlayer();
         saveStatsForOpponent();
     }
@@ -76,12 +82,18 @@ public class startNextFight : MonoBehaviour
 
         playerTwo.guardHeadStatAfterLastFight = playerTwo.guardHead;
         playerTwo.guardBodyStatAfterLastFight = playerTwo.guardBody;
+
+        playerTwo.knockdownChanceStatAfterLastFight = playerTwo.knockdownChance;
+        playerTwo.reduceOpponentStaminaRecoveryChanceStatAfterLastFight = playerTwo.reduceOpponentStaminaRecoveryChance;
     }
 
     public void victoryPanelToGymPanel()
     {
         victoryPanelGO.SetActive(false);
         gymPanelGO.SetActive(true);
+        moneyTextGO.SetActive(true);
+        playerStatsButtonGO.SetActive(true);
+
         playerPanelScriptsGO.GetComponent<playerStatsUIController>().updateText();
     }
 

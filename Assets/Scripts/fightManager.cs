@@ -378,6 +378,7 @@ public class fightManager : MonoBehaviour
         //jabPlayerOneInt++;
         //Debug.Log("PlayerOneJabHead" + jabPlayerOneInt);
         GetComponent<jabFight>().jabHead(PlayerOne, PlayerTwo, singelPunch);
+        //Debug.Log("Player Two Accuracy: " + PlayerTwo.accuracy); EJ FEL HÄR MED NOLLSTÄLLNING AV ACC
         //afterActionChoicePlayerOne();
         
     }
@@ -885,6 +886,18 @@ public void playerOneCrossHead(int accuracyBoost)
             PlayerOne.GetComponent<boxRecord>().victory++;
             SimulateFightDataSO.playerOneWinner.Add(true);
 
+            //Vid seger
+            if (PlayerTwo.playerLvl == 0)
+            {
+                Debug.Log("Seger mot Lvl 0 motstånd");
+                gameloopScripsGO.GetComponent<moneyManager>().priceMoneyLvlZeroVictoryFunc();
+            }
+
+            if (PlayerTwo.playerLvl == 1)
+            {
+                PlayerOne.GetComponent<boxRecord>().victoryLvlOneOpp++;
+            }
+
             gameloopScripsGO.GetComponentInChildren<simRankedFight>().endOfFightPlayerOneWonByKO();
 
             //Om motståndaren är mästare
@@ -934,6 +947,18 @@ public void playerOneCrossHead(int accuracyBoost)
             statisticsGO.GetComponent<fightStatistics>().addVictory();
             PlayerOne.GetComponent<boxRecord>().victory++;
             SimulateFightDataSO.playerOneWinner.Add(true);
+
+            //Vid seger
+            if (PlayerTwo.playerLvl == 0)
+            {
+                Debug.Log("Seger mot Lvl 0 motstånd");
+                gameloopScripsGO.GetComponent<moneyManager>().priceMoneyLvlZeroVictoryFunc();
+            }
+
+            if (PlayerTwo.playerLvl == 1)
+            {
+                PlayerOne.GetComponent<boxRecord>().victoryLvlOneOpp++;
+            }
 
             gameloopScripsGO.GetComponentInChildren<simRankedFight>().endOfFightPlayerOneWonByDecision();
             
@@ -1019,8 +1044,9 @@ public void playerOneCrossHead(int accuracyBoost)
     {
         
         PlayerOne.resetAfterFight();
+        PlayerTwo.resetAfterFight();
         simulationPanelGO.GetComponent<simulateFight>().endOfFight();
-        gameloopScripsGO.GetComponent<rankingManager>().unlockChampionsAfterXFights(PlayerOne.GetComponent<boxRecord>().victory);
+        gameloopScripsGO.GetComponent<rankingManager>().unlockChampionsAfterXFights(PlayerOne.GetComponent<boxRecord>().victoryLvlOneOpp);
         //gameloopScripsGO.GetComponent<rankingManager>().checkIfPlayerWillRankUp(PlayerOne.GetComponent<boxRecord>().victory);
         //Debug.Log("Vinster: " + PlayerOne.GetComponent<boxRecord>().victory);
         //Debug.Log("Förluster: " + PlayerOne.GetComponent<boxRecord>().defeat);
@@ -1031,8 +1057,8 @@ public void playerOneCrossHead(int accuracyBoost)
         {
             //Skapa nya motståndare
             
-            for (int i = 0; opponentListRandomGO.GetComponent<playerList>().PlayerList.Count > i; i++)
-            {
+            //for (int i = 0; opponentListRandomGO.GetComponent<playerList>().PlayerList.Count > i; i++)
+            //{
                 //FUNKADE INTE UTAN FASTNADE HELA TIDEN PÅ LVL 1 MOTSTÅND
                /* //Spelaren kan bara möta motstånd med en lvl lägre. HAN INTE BALANSERA LVL 2 MOTSTÅND TIDIGARE. KAN TAS BORT SEN
                 if (playerRankedLvl == gameloopScripsGO.GetComponent<rankingManager>().playerRankedLvlForBelt)
@@ -1040,9 +1066,9 @@ public void playerOneCrossHead(int accuracyBoost)
                     playerRankedLvl = gameloopScripsGO.GetComponent<rankingManager>().playerRankedLvlForBelt - 1;
                 }
                 */
-                opponentListRandomGO.GetComponent<playerList>().PlayerList[i].GetComponent<createOpponent>().setLvl(playerRankedLvl);
-                opponentListRandomGO.GetComponent<playerList>().PlayerList[i].GetComponent<createOpponent>().createOpponentFunction();
-            }
+               // opponentListRandomGO.GetComponent<playerList>().PlayerList[i].GetComponent<createOpponent>().setLvl(playerRankedLvl);
+                //opponentListRandomGO.GetComponent<playerList>().PlayerList[i].GetComponent<createOpponent>().createOpponentFunction();
+            //}
             
         }
 

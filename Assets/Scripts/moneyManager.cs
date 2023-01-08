@@ -8,6 +8,9 @@ public class moneyManager : MonoBehaviour
     public int moneyStart;
     public int moneyNow;
 
+    //Segerpengar
+    public int priceMoneyLvlZeroVictory;
+
     public Text moneyNowText;
 
     private void Start()
@@ -25,6 +28,12 @@ public class moneyManager : MonoBehaviour
     public void increaseMoney(int money)
     {
         moneyNow += money;
+        moneyNowText.text = "Money: " + moneyNow;
+    }
+
+    public void priceMoneyLvlZeroVictoryFunc()
+    {
+        moneyNow += priceMoneyLvlZeroVictory;
         moneyNowText.text = "Money: " + moneyNow;
     }
 }

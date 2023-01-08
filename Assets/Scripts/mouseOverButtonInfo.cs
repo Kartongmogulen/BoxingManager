@@ -12,6 +12,7 @@ public class mouseOverButtonInfo : MonoBehaviour
     public int playerTwoAccuracyStatModifier;//Om "KeepDistance" är true. Minska egna spelaren accuracy
 
     public GameObject fightScriptGO;
+    public attributeManager AttributeManager;
 
     public Text buttonJabHeadText;
     public Text buttonJabBodyText;
@@ -61,7 +62,9 @@ public class mouseOverButtonInfo : MonoBehaviour
 
     public void mouseOverJabHead()
     {
+        
         getPlayerTwo();
+        Debug.Log("MouseOverJabHead Accuracy Start: " + PlayerTwo.accuracy);
         actionDescritionText.text = buttonJabHeadText.text;
         damageText.text = "Damage: " + PlayerOne.jabDamageHead;
         staminaDamageText.text = "Stamina damage: " + 0;
@@ -70,6 +73,7 @@ public class mouseOverButtonInfo : MonoBehaviour
         guardStatText.text = "Guard (def): " + PlayerTwo.guardHead;
 
         colorStatIfAffected();
+        Debug.Log("MouseOverJabHead Accuracy End: " + PlayerTwo.accuracy);
     }
 
     public void mouseOverJabMeasure()
@@ -134,6 +138,17 @@ public class mouseOverButtonInfo : MonoBehaviour
         colorStatIfAffected();
     }
 
+    public void OneTwoCombo()
+    {
+        getPlayerTwo();
+        actionDescritionText.text = "Jab (Head) followed by a Cross(Head)";
+        damageText.text = "Damage: " + (PlayerOne.jabDamageHead + PlayerOne.crossDamageHead) + " (Jab: " + PlayerOne.jabDamageHead + " Cross: " + PlayerOne.crossDamageHead + ")";
+        staminaDamageText.text = "Stamina damage: " + 0;
+        staminaUsePlayerText.text = "Stamina use: " + (PlayerOne.jabStaminaUseHead + PlayerOne.crossStaminaUseHead);
+        accuracyStatText.text = "Accuracy: " + "Jab:" + PlayerOne.jabAccuracyHead + "/Cross:" + PlayerOne.crossAccuracyHead + " Or " + (PlayerOne.crossAccuracyHead+AttributeManager.oneTwoAccuracyIncrease[PlayerOne.oneTwoComboLvl]);
+        guardStatText.text = "Guard (def): " + PlayerTwo.guardHead;
+    }
+
     public void OnMouseExit()
     {
     
@@ -149,6 +164,7 @@ public class mouseOverButtonInfo : MonoBehaviour
     {
       
         PlayerTwo = fightScriptGO.GetComponent<fightManager>().PlayerTwo;
+        //Debug.Log("getPlayerTwo Start: " + PlayerTwo.accuracy);
 
         if (PlayerTwo.jabKeepDistanceActive == true)
             playerTwoAccuracyStatModifier = PlayerTwo.jabKeepDistanceStatBoost;

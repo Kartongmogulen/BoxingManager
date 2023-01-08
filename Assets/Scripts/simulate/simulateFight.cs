@@ -431,7 +431,7 @@ public class simulateFight : MonoBehaviour
         }
         */
 
-        Debug.Log("Fight slut");
+        //Debug.Log("Fight slut");
         fightEnded = true;
         continueSimLoop = false;
         return;

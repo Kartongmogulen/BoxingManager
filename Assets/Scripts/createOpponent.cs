@@ -129,6 +129,9 @@ public class createOpponent : MonoBehaviour
             Player.accuracy += AttributeManager.sluggerAccuracyChange;
             //Debug.Log(Player.name + "Accuracy: " + Player.accuracy);
         }
+        //Debug.Log("CreateOpponent Accuracy: " + Player.accuracy); //EJ FEL GÄLLANDE NOLLSTÄLLNING AV STAT TY DENNA UFFÖRS VID START
+        Player.accuracyStatAfterLastFight = Player.accuracy;
+        Player.strengthStatAfterLastFight = Player.strength;
     }
 
     public void bodyHead()
@@ -189,16 +192,21 @@ public class createOpponent : MonoBehaviour
             //Debug.Log("RandomInt: " + randomInt);
         }
 
+        Player.knockdownChanceStatAfterLastFight = Player.knockdownChance;
+        Player.reduceOpponentStaminaRecoveryChanceStatAfterLastFight = Player.reduceOpponentStaminaRecoveryChance;
+
     }
 
     public void guardPoints(int pointsToShare)
     {
         randomInt = Random.Range(0, pointsToShare);
         Player.guardHead = CreateOpponentAttributeList.guardMin[lvlOpponent] + randomInt;
+        Player.guardHeadStatAfterLastFight = Player.guardHead;
 
         //Återstående poäng tilldelas här
         randomInt = pointsToShare - randomInt;
         Player.guardBody = CreateOpponentAttributeList.guardMin[lvlOpponent] + randomInt;
+        Player.guardBodyStatAfterLastFight = Player.guardBody;
     }
 
     public void guardFlexiblePoints(int min, int max)
@@ -211,7 +219,7 @@ public class createOpponent : MonoBehaviour
     {
         //OneTwo-Combo
         randomInt = Random.Range(0, 100);
-        if (randomInt <= CreateOpponentAttributeList.oneTwoComboProb[lvlOpponent])
+        if (randomInt < CreateOpponentAttributeList.oneTwoComboProb[lvlOpponent])
         {
             Player.oneTwoUnlocked = true;
         }

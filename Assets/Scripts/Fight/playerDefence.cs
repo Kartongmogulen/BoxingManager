@@ -21,7 +21,7 @@ public class playerDefence : MonoBehaviour
     {
         int guardPart = guardParttStatAfterLastFight;
 
-        Debug.Log("guardPartStaminaChange: " + guardPartStaminaChange);
+        //Debug.Log("guardPartStaminaChange: " + guardPartStaminaChange);
 
         //Korrigering för Stamina
         int guardPartCorrectedForStamina = staminaCorrection(guardPartStaminaChange, guardParttStatAfterLastFight);
@@ -38,7 +38,7 @@ public class playerDefence : MonoBehaviour
         //int correctGuardForStamina = 0;
 
         int correctGuardForStamina = Mathf.RoundToInt(Mathf.Round(guardStatAfterLastFight * guardStaminaChange/100));
-        Debug.Log("GuardEfterStaminaCorrection: " + correctGuardForStamina);
+        //Debug.Log("GuardEfterStaminaCorrection: " + correctGuardForStamina);
 
         return correctGuardForStamina;
 

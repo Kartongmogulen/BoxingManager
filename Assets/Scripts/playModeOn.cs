@@ -12,6 +12,9 @@ public class playModeOn : MonoBehaviour
     public GameObject playerPanelScriptGO;
     public GameObject gymPanelGO;
     public GameObject endOfWeekPanelGO;
+    public GameObject jabHeadMeasureGO;
+    public GameObject jabKeepDistanceGO;
+    public GameObject fightStatModifierPanelGO;
 
     public player PlayerOne;
 
@@ -25,11 +28,18 @@ public class playModeOn : MonoBehaviour
     public int actionsPerRound; //Antal aktioner innan det blir nästa spelarens tur
     public int totalKOBeforeFightEnds;
 
+
+
     private void Awake()
     {
         //UI vid start
         gymPanelGO.SetActive(true);
         endOfWeekPanelGO.SetActive(false);
+
+        //UI FightPanel
+        fightStatModifierPanelGO.SetActive(false);
+        jabHeadMeasureGO.SetActive(false);
+        jabKeepDistanceGO.SetActive(false);
 
         //Rätt GO Player väljs
         fightScriptsGO.GetComponent<fightManager>().PlayerOne = PlayerOne;
@@ -38,7 +48,7 @@ public class playModeOn : MonoBehaviour
 
         //Ranking
         GetComponentInParent<rankingManager>().playerRanked = false;
-        GetComponentInParent<rankingManager>().victoriesToUnlockChamps = 
+        GetComponentInParent<rankingManager>().victoriesToUnlockChamps = victoriesToUnlockChamps;
         //champChoosePanelGO.SetActive(false);
         //GetComponentInParent<rankingManager>().playerRankedLvlForBelt = playerRankedLvlForBelt;
         //GetComponentInParent<rankingManager>().limitToRankUpPlayer = limitToRankUpPlayer;
@@ -50,6 +60,7 @@ public class playModeOn : MonoBehaviour
         
         //Player One. Nollstäl till grundinställningar
         PlayerOne.oneTwoUnlocked = false;
+        
     }
 
  

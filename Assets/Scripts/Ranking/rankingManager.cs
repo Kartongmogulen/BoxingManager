@@ -40,9 +40,12 @@ public class rankingManager : MonoBehaviour
 
     public void unlockChampionsAfterXFights(int victories)
     {
+        //Debug.Log("RankingManager victories: " + victories);
+        //Debug.Log("Victories to unlock Champions: " + victoriesToUnlockChamps);
         if (victories >= victoriesToUnlockChamps)
         {
             playerRanked = true;
+            Debug.Log("PlayerRanked: " + playerRanked);
         }
 
         if (playerRanked == true)
