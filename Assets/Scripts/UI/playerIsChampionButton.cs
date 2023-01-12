@@ -9,10 +9,12 @@ public class playerIsChampionButton : MonoBehaviour
     public Button chooseChampionButton;
     public Text chooseChampionText;
 
+
     public void playerIsNowTheChampion()
     {
         chooseChampionButton.GetComponent<Image>().color = Color.green;
         chooseChampionButton.GetComponent<Button>().interactable = false;
         chooseChampionText.text = "You are the champion!";
+
     }
 }

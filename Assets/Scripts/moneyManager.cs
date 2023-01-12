@@ -10,8 +10,10 @@ public class moneyManager : MonoBehaviour
 
     //Segerpengar
     public int priceMoneyLvlZeroVictory;
+    public int priceMoneyLvlOneVictory;
 
     public Text moneyNowText;
+  
 
     private void Start()
     {
@@ -31,9 +33,14 @@ public class moneyManager : MonoBehaviour
         moneyNowText.text = "Money: " + moneyNow;
     }
 
-    public void priceMoneyLvlZeroVictoryFunc()
+    public void priceMoneyVictory(int lvlOpponent)
     {
+        if (lvlOpponent == 0)
         moneyNow += priceMoneyLvlZeroVictory;
+
+        if (lvlOpponent == 1)
+        moneyNow += priceMoneyLvlOneVictory;
+
         moneyNowText.text = "Money: " + moneyNow;
     }
 }

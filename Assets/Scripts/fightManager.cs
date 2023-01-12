@@ -887,11 +887,9 @@ public void playerOneCrossHead(int accuracyBoost)
             SimulateFightDataSO.playerOneWinner.Add(true);
 
             //Vid seger
-            if (PlayerTwo.playerLvl == 0)
-            {
-                Debug.Log("Seger mot Lvl 0 motstånd");
-                gameloopScripsGO.GetComponent<moneyManager>().priceMoneyLvlZeroVictoryFunc();
-            }
+            
+           gameloopScripsGO.GetComponent<moneyManager>().priceMoneyVictory(PlayerTwo.playerLvl);
+           
 
             if (PlayerTwo.playerLvl == 1)
             {
@@ -949,11 +947,8 @@ public void playerOneCrossHead(int accuracyBoost)
             SimulateFightDataSO.playerOneWinner.Add(true);
 
             //Vid seger
-            if (PlayerTwo.playerLvl == 0)
-            {
-                Debug.Log("Seger mot Lvl 0 motstånd");
-                gameloopScripsGO.GetComponent<moneyManager>().priceMoneyLvlZeroVictoryFunc();
-            }
+            
+            gameloopScripsGO.GetComponent<moneyManager>().priceMoneyVictory(PlayerTwo.playerLvl);
 
             if (PlayerTwo.playerLvl == 1)
             {

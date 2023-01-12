@@ -36,7 +36,7 @@ public class startNextFight : MonoBehaviour
     {
         playerPanelGO.SetActive(false);
         fightPanelGO.SetActive(true);
-
+        GetComponent<dodgeOnOffButton>().startFight();
         fightScriptGO.GetComponent<fightManager>().setUpFight();
         HealthPanelTextUpdate.updatePlayerOneText();
         playerOne.startFight();
@@ -50,11 +50,12 @@ public class startNextFight : MonoBehaviour
         fightPanelGO.SetActive(true);
         moneyTextGO.SetActive(false);
         playerStatsButtonGO.SetActive(false);
-
+        GetComponent<dodgeOnOffButton>().startFight();
         fightScriptGO.GetComponent<fightManager>().setUpFight();
         HealthPanelTextUpdate.updatePlayerOneText();
         playerOne.startFight();
         PlayerStatsUIController.guardDuringFight();
+
         saveStatsForPlayer();
         saveStatsForOpponent();
     }

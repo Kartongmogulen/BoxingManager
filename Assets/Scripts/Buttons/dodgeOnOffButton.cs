@@ -22,4 +22,10 @@ public class dodgeOnOffButton : MonoBehaviour
             dodgeActiveText.text = "Dodge: OFF";
         }
     }
+
+    public void startFight()
+    {
+        Player.dodgeActive = false;
+        dodgeActiveText.text = "Dodge: OFF";
+    }
 }

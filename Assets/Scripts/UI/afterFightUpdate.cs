@@ -10,14 +10,17 @@ public class afterFightUpdate : MonoBehaviour
     public Text XPAwardText;
     public GameObject playerPanelGO;
     public GameObject nextButton;
+    public GameObject xpAwardGO;
+    public GameObject gameloopScriptsGO;
 
 
     public void updateTextChampion(player PlayerOne)
     {
         fighterWhoWonText.text = PlayerOne.name + " is now the CHAMPION!";
-        VictoryByText.text = "";
-        XPAwardText.text = "";
-        //nextButton.SetActive(false); //Då spelet bara hade en Champ och spelet var slut vid första bältet
+        VictoryByText.text = "Weeks to become champion: " + gameloopScriptsGO.GetComponent<endWeekButton>().weekCounter;
+        XPAwardText.text = "With a record of W:" + PlayerOne.GetComponent<boxRecord>().victory + " L:" + PlayerOne.GetComponent<boxRecord>().defeat;
+        nextButton.SetActive(false); //Då spelet bara hade en Champ och spelet var slut vid första bältet
+        xpAwardGO.SetActive(true);
     }
 
    public void updateText(player PlayerOne, bool playerOneWon)

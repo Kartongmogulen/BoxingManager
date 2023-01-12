@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260409e95834cb54a9e91c0ccee95e08, type: 3}
   m_Name: createOpponentAttributeListSO
   m_EditorClassIdentifier: 
-  accuracyAndStrengthPointsToShare: 03000000080000000d000000
+  accuracyAndStrengthPointsToShare: 03000000070000000d000000
   accuracyMin: 3
   strengthMin: 3
   bodysnatcherAndKOPointsToShareMin: 000000000200000004000000
-  bodysnatcherAndKOPointsToShareMax: 000000000500000008000000
-  guardPointsToShare: 03000000050000000b000000
+  bodysnatcherAndKOPointsToShareMax: 000000000400000008000000
+  guardPointsToShare: 03000000040000000b000000
   guardMin: 010000000300000005000000
-  guardFlexiblePointsToShare: 000000000300000005000000
-  guardFlexibleMin: 000000000100000003000000
+  guardFlexiblePointsToShare: 000000000200000005000000
+  guardFlexibleMin: 000000000000000003000000
   oneTwoComboProb: 000000000000000019000000
